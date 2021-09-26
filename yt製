@@ -1,0 +1,1526 @@
+    -- init
+
+        local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))()
+        local hub = library.new("yt製", 5013109572)
+
+        wait(1)
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "iamyt#0001";
+            Text = "shit loads rq huh";
+        })
+
+        -- themes
+        local themes = {
+        Background = Color3.fromRGB(24, 24, 24),
+        Glow = Color3.fromRGB(15, 255, 255),
+        Accent = Color3.fromRGB(, 180, 180),
+        LightContrast = Color3.fromRGB(23, 146, 146),
+        DarkContrast = Color3.fromRGB(14, 14, 14),  
+        TextColor = Color3.fromRGB(255, 255, 255)
+        }
+
+        --main page
+        local page = hub:addPage("Main", 5012544693)
+        local main = page:addSection("Main")
+
+        main:addSlider("Tele Speed (Q)", 1, 100, 4500, function(t)
+            _G.Tele = "Q"
+
+                    d = false
+                    vel = Instance.new("BodyVelocity")
+                    vel.maxForce = Vector3.new(10000000, 0, 10000000)
+
+                    local s = t
+                    g = Instance.new("BodyGyro")
+                    g.maxTorque = Vector3.new(10000000, 0, 10000000)
+
+                    local h = game.Players.LocalPlayer.Character.Humanoid
+
+                    function onButton1Down(mouse)
+                    d = true
+                    vel.Parent = game.Players.LocalPlayer.Character.UpperTorso
+                    vel.velocity = (h.MoveDirection) * s
+                    g.Parent = game.Players.LocalPlayer.Character.UpperTorso
+
+                    while d do
+                        if not d then
+                        break
+                        end
+                        vel.velocity = (h.MoveDirection) * s
+                        local refpos = g.Parent.Position + (g.Parent.Position - workspace.CurrentCamera.CoordinateFrame.p).unit * 5
+                        g.cframe = CFrame.new(gyro.Parent.Position, Vector3.new(refpos.x, g.Parent.Position.y, refpos.z))
+                        wait(0.1)
+                        end end
+
+                    function onButton1Up(mouse)
+                        vel.Parent = nil
+                        g.Parent = nil
+                        d = false end
+
+                    function onSelected(mouse)
+                        mouse.KeyDown:connect(function(k)
+                            if k:upper() == _G.Tele then
+                                onButton1Down(mouse)
+                            end end)
+
+                        mouse.KeyUp:connect(function(k)
+                            if k:upper() == _G.Tele then
+                                onButton1Up(mouse) end
+                        end)
+                    end
+                    onSelected(game.Players.LocalPlayer:GetMouse())
+        end)
+
+    main:addToggle("No Slow", nil, function(aha)
+    local NSLOW = aha
+    if NSLOW then
+    _G.NoSlow = true
+    while _G.NoSlow do
+        wait()
+        local uis = game:GetService("UserInputService")
+uis.InputBegan:connect(function(ip, gpe)
+    if ip.KeyCode == Enum.KeyCode.ButtonX and not gpe then
+        wait(0.1)
+					local player = game.Players.LocalPlayer
+					function FindNearest(position)
+						local lowest = 50 -- infinity
+						local NearestPlayer = nil
+						for i, v in pairs(game.Players:GetPlayers()) do
+							if v.Name ~= game.Players.LocalPlayer.Name then
+								if v and v.Character then
+									local distance = v:DistanceFromCharacter(position)
+									if distance < lowest then
+										lowest = distance
+										NearestPlayer = v
+									end
+								end
+							end
+						end
+						return NearestPlayer
+					end
+					target = FindNearest(game.Players.LocalPlayer.Character:WaitForChild("Head").Position);
+					local man = game.Players.LocalPlayer.Character;
+					local enemy = game.Players[target.Name].Character;
+					man.PrimaryPart.CFrame = enemy.PrimaryPart.CFrame * CFrame.new(Vector3.new(0, 0, 3))
+					game:GetService("Workspace").Camera.CFrame = enemy.PrimaryPart.CFrame
+		end
+end)
+for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v.Name == "Justice Combination" then
+local action = game.Players.LocalPlayer.Character:WaitForChild("Action")
+    if action then wait() action:Destroy() end end
+    if v.Name == "Action" then
+v:Destroy()
+end
+    if v.Name == "Attacking" then
+v:Destroy()
+end
+    if v.Name == "Using" then
+v:Destroy()
+end
+    if v.Name == "hyper" then
+    v:Destroy()
+    end
+    if v.Name == "Hyper" then
+    v:Destroy()
+    end
+    if v.Name == "heavy" then
+    v:Destroy()
+    end
+    if v.Name == "KiBlasted" then
+        v:Destroy()
+        end
+        if v.Name == "Tele" then
+        v:Destroy()
+        end
+        if v.Name == "tele" then
+        v:Destroy()
+        end
+        if v.Name == "Killed" then
+            v:Destroy()
+            end
+            if v.Name == "Slow" then
+            v:Destroy()
+            end
+    if v.Name == "Block" and v.Value == true then
+    v.Value = false
+    end
+    end
+    end
+    else
+    _G.NoSlow = false
+    end
+    end)
+
+            main:addButton("Earth Godmode", function()
+            game:GetService("RunService").Stepped:Connect(function()
+            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, game.Workspace.Touchy.Part, 0)
+            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, game.Workspace.Touchy.Part, 1)
+            if game.Players.LocalPlayer.PlayerGui:FindFirstChild("Popup") then
+            game.Players.LocalPlayer.PlayerGui.Popup:Remove()
+        end end)
+        end)
+      main:addButton("Hair/Earth Godmode", function()
+      local plr = game.Players.LocalPlayer
+game.Workspace.Live[plr.name].Parent = game.Workspace.Effects
+wait()
+local args1 = game:GetService("Workspace").FriendlyNPCs["Hair Stylist"]
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(args1)
+wait(0.30)
+local args = {
+    [1] = {
+        [1] = "Yes",
+    },
+}
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer(unpack(args))
+
+game:GetService("RunService").RenderStepped:connect(function()
+    game:GetService("Players").LocalPlayer.PlayerGui.Setup.Enabled = false
+end)
+        main:addButton("Exp Freezer", function()	
+        repeat wait() until game:IsLoaded()
+wait(.5)
+game:GetService("RunService").Stepped:Connect(function()
+                    if game.Players.LocalPlayer.Character:FindFirstChild("True") then
+                        game.Players.LocalPlayer.Character:FindFirstChild("True"):Destroy()
+                    end
+                end)
+                end)
+                end)	
+
+       main:addButton("Rainbow Godmode", function()
+       local plr = game.Players.LocalPlayer
+game.Workspace.Live[plr.name].Parent = game.Workspace.Effects
+wait()
+local args1 = game:GetService("Workspace").FriendlyNPCs["Hair Stylist"]
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(args1)
+wait(0.30)
+local args = {
+    [1] = {
+        [1] = "Yes",
+    },
+}
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer(unpack(args))
+
+game:GetService("RunService").RenderStepped:connect(function()
+    game:GetService("Players").LocalPlayer.PlayerGui.Setup.Enabled = false
+    game:GetService("Players").LocalPlayer.Backpack.HairScript.RemoteEvent:FireServer(game:GetService("Players").LocalPlayer.PlayerGui.Setup.Frame.Side.HairColor,"up")
+    game:GetService("Players").LocalPlayer.Backpack.HairScript.RemoteEvent:FireServer(game:GetService("Players").LocalPlayer.PlayerGui.Setup.Frame.Side.Skin,"up")
+    game:GetService("Players").LocalPlayer.Backpack.HairScript.RemoteEvent:FireServer(game:GetService("Players").LocalPlayer.PlayerGui.Setup.Frame.Side.Hair,"up")
+end)
+end)
+
+        
+        local main = page:addSection("Hide")
+
+        main:addButton("Hide Level", function()
+        game:service'RunService'.RenderStepped:connect(function()
+            pcall(function()
+            for i,v in next, game:service'Players'.LocalPlayer.Character:children() do
+                    if (string.find(tostring(v.Name):lower(), 'lvl.')) then 
+                    v:Destroy()
+                end
+            end
+        end)
+        end)
+        end)
+
+        main:addButton("Hide Wings", function()
+        repeat wait()
+        until game:IsLoaded()
+        game.Players.LocalPlayer.PlayerGui:WaitForChild("HUD")
+
+        local Live = game:WaitForChild("Workspace").Live
+        local Char = Live:WaitForChild(game.Players.LocalPlayer.Name)
+
+        while wait() do
+            pcall(function()
+                Char["RebirthWings"].Handle.AccessoryWeld:Destroy()
+            end)
+        end
+        end)
+
+        main:addButton("Hide Halo", function()
+        local plr = game.Players.LocalPlayer
+        game.Workspace.Live[plr.name].RealHalo["Handle"]:Destroy()
+        end)
+
+        main:addButton("Hide Sensor", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.PowerLevel:Destroy() 
+end)    
+        
+        main:addButton("Hide Senzu Aura", function()
+        if not game:IsLoaded() then
+game.Loaded:Wait()
+end
+
+game:GetService("RunService").RenderStepped:Connect(function()
+for i,v in pairs(game.Players.LocalPlayer.Character.HumanoidRootPart:GetChildren()) do 
+if v.Name:find("Critz") then
+v:Destroy()
+end end
+end)
+wait()
+game:GetService("RunService").RenderStepped:Connect(function()
+for i,v in pairs(game.Players.LocalPlayer.Character.HumanoidRootPart:GetChildren()) do 
+if v.Name:find("Inf") then
+v:Destroy()
+end end
+end)
+wait()
+game:GetService("RunService").RenderStepped:Connect(function()
+for i,v in pairs(game.Players.LocalPlayer.Character.HumanoidRootPart:GetChildren()) do 
+if v.Name:find("Eva") then
+v:Destroy()
+end end
+end)
+end)
+
+main:addButton("Hide Form Aura", function()
+      if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("TempAura") or game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Lightning") then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.TempAura:Destroy()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Lightning:Destroy()
+    end
+end)
+
+        main:addButton("Hide Clothes", function()
+    game.Players.LocalPlayer.Character.Shirt:Destroy()
+    game.Players.LocalPlayer.Character.Pants:Destroy()
+    game.Players.LocalPlayer.Character.Head.Mesh:Destroy()
+end)
+
+local main = page:addSection("MoveSpam")
+
+main:addButton("MeleeMoveSpam", function()
+if not game:IsLoaded() then
+game.Loaded:Wait()
+end
+wait(0.2)
+local lplr = game.Players.LocalPlayer
+local mouse = lplr:GetMouse()
+_G.on = false
+on = true
+off = false
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+    Title = "yt製";
+    })
+    
+game:GetService("StarterGui"):SetCore("SendNotification", {
+    Title = "Move Spam";
+    Text = "Press u to enable/disable.";
+    })
+
+mouse.KeyDown:connect(function(key)
+    if key == "u" then
+        if _G.on == false then
+            _G.on = on
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Spam Enabled";
+                Text = "Press u to disable.";
+                })
+            while _G.on == true do
+                wait()
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Flash Strike"])
+game.Players.LocalPlayer.Character["Flash Strike"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Flash Skewer"])
+game.Players.LocalPlayer.Character["Flash Skewer"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Sweep Kick"])
+game.Players.LocalPlayer.Character["Sweep Kick"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Wolf Fang Fist"])
+game.Players.LocalPlayer.Character["Wolf Fang Fist"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Neo Wolf Fang Fist"])
+game.Players.LocalPlayer.Character["Neo Wolf Fang Fist"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Anger Rush"])
+game.Players.LocalPlayer.Character["Anger Rush"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Meteor Crash"])
+game.Players.LocalPlayer.Character["Meteor Crash"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["God Slicer"])
+game.Players.LocalPlayer.Character["God Slicer"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["TS Molotov"])
+game.Players.LocalPlayer.Character["TS Molotov"]:Activate()
+wait()
+            end
+        elseif _G.on == true then
+            _G.on = off
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Spam Disabled";
+                Text = "Press u to enable.";
+                })
+        end
+    end
+end)
+while wait() do
+for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+if v.Name == "Justice Combination" then
+local action = game.Players.LocalPlayer.Character:WaitForChild("Action")
+if action then wait() action:Destroy() end end
+if v.Name == "Attacking" then
+v:Destroy()
+end
+if v.Name == "Action" then
+v:Destroy()
+end
+if v.Name == "Killed" then
+v:Destroy()
+end
+if v.Name == "Block" and v.Value == true then
+v.Value = false
+end
+end
+end
+end)
+
+main:addButton("KiMoveSpam", function()
+--[_iamyt#0001_]--
+--[By: yt製]--
+--[[Special Thanks to LazarTM for keybinding script.]]--
+game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "yt製";
+        })
+
+wait(1)
+local lplr = game.Players.LocalPlayer
+local mouse = lplr:GetMouse()
+_G.on = false
+on = true
+off = false
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+    Title = "Ki Move Spam";
+    Text = "Press j to enable/disable.";
+    })
+
+mouse.KeyDown:connect(function(key)
+    if key == "j" then
+        if _G.on == false then
+            _G.on = on
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Spam Enabled";
+                Text = "Press j to disable.";
+                })
+            while _G.on == true do
+                wait()
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Demon Flash"])
+game.Players.LocalPlayer.Character["Demon Flash"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Big Bang Kamehameha"])
+game.Players.LocalPlayer.Character["Big Bang Kamehameha"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Burning Blast"])
+game.Players.LocalPlayer.Character["Burning Blast"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Kick Barrage"])
+game.Players.LocalPlayer.Character["Kick Barrage"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Wolf Fang Fist"])
+game.Players.LocalPlayer.Character["Wolf Fang Fist"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Neo Wolf Fang Fist"])
+game.Players.LocalPlayer.Character["Neo Wolf Fang Fist"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Anger Rush"])
+game.Players.LocalPlayer.Character["Anger Rush"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Meteor Crash"])
+game.Players.LocalPlayer.Character["Meteor Crash"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Blaster Meteor"])
+game.Players.LocalPlayer.Character["Blaster Meteor"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["TS Molotov"])
+game.Players.LocalPlayer.Character["TS Molotov"]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Mach Kick"])
+game.Players.LocalPlayer.Character["Mach Kick"]:Activate()
+            end
+        elseif _G.on == true then
+            _G.on = off
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Spam Disabled";
+                Text = "Press j to enable.";
+                })
+        end
+    end
+end)
+while wait() do
+for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+if v.Name == "Justice Combination" then
+local action = game.Players.LocalPlayer.Character:WaitForChild("Action")
+if action then wait() action:Destroy() end end
+if v.Name == "Attacking" then
+v:Destroy()
+end
+if v.Name == "Action" then
+v:Destroy()
+end
+if v.Name == "Killed" then
+v:Destroy()
+end
+if v.Name == "Block" and v.Value == true then
+v.Value = false
+end
+end
+end
+end)
+
+
+
+
+
+--Misc page
+    local page = hub:addPage("Misc", 5012544693)
+        local main = page:addSection("Misc")
+
+ main:addSlider("FOV", 90, 1, 120, function(FV)
+    game.Workspace.Camera.FieldOfView = FV
+end)
+
+main:addButton("Lock On (N)", function()
+local plrs = game:GetService("Players")
+local presskeytoaim = true; local aimkey = "n"
+local raycast = false
+
+local espupdatetime = 5; autoesp = false
+
+
+
+local lockaim = true; local lockangle = 5
+
+
+
+--function findwat(folder, what)
+--	for i, smth in pairs(folder:GetChildren()) do
+--		if string.find(string.lower(tostring(smth)), string.lower(what)) then
+--			return smth
+--		end
+--	end
+--end
+--
+--local plrs = findwat(game, "Players")
+
+
+
+
+local Gui = Instance.new("ScreenGui")
+local Move = Instance.new("Frame")
+local Main = Instance.new("Frame")
+local st1 = Instance.new("TextLabel")
+local st1_2 = Instance.new("TextLabel")
+local st1_3 = Instance.new("TextLabel")
+local Name = Instance.new("TextLabel")
+--Properties:
+
+-- Scripts:
+
+
+local plrsforaim = {}
+
+local lplr = game:GetService("Players").LocalPlayer
+Move.Draggable = true
+Gui.ResetOnSpawn = false
+Gui.Name = "Chat"
+Gui.DisplayOrder = 999
+
+	Gui.Parent = plrs.LocalPlayer.PlayerGui
+
+
+f = {}
+
+
+
+local cam = game.Workspace.CurrentCamera
+
+local mouse = lplr:GetMouse()
+local switch = false
+local key = "k"
+local aimatpart = nil
+mouse.KeyDown:Connect(function(a)
+	if a == "t" then
+		print("worked1")
+		f.addesp()
+	elseif a == "u" then
+		if raycast == true then
+			raycast = false
+		else
+			raycast = true
+		end
+	elseif a == "l" then
+		if autoesp == false then
+			autoesp = true
+		else
+			autoesp = false
+		end
+	end
+	if a == "j" then
+		if mouse.Target then
+			mouse.Target:Destroy()
+		end
+	end
+	if a == key then
+		if switch == false then
+			switch = true
+		else
+			switch = false
+			if aimatpart ~= nil then
+				aimatpart = nil
+			end
+		end
+	elseif a == teambasedswitch then
+		if TeamBased == true then
+			TeamBased = false
+			teambasedstatus.Text = tostring(TeamBased)
+		else
+			TeamBased = true
+			teambasedstatus.Text = tostring(TeamBased)
+		end
+	elseif a == aimkey then
+		if not aimatpart then
+			local maxangle = math.rad(20)
+			for i, plr in pairs(plrs:GetChildren()) do
+				if plr.Name ~= lplr.Name and plr.Character and plr.Character.Head and plr.Character.Humanoid and plr.Character.Humanoid.Health > 1 then
+					if TeamBased == true then
+						if plr.Team.Name ~= lplr.Team.Name then
+							local an = checkfov(plr.Character.Head)
+							if an < maxangle then
+								maxangle = an
+								aimatpart = plr.Character.Head
+							end
+						end
+					else
+						local an = checkfov(plr.Character.Head)
+							if an < maxangle then
+								maxangle = an
+								aimatpart = plr.Character.Head
+							end
+							print(plr)
+					end
+					plr.Character.Humanoid.Died:Connect(function()
+						if aimatpart.Parent == plr.Character or aimatpart == nil then
+							aimatpart = nil
+						end
+					end)
+				end
+			end
+		else
+			aimatpart = nil
+		end
+	end
+end)
+
+function getfovxyz (p0, p1, deg)
+	local x1, y1, z1 = p0:ToOrientation()
+	local cf = CFrame.new(p0.p, p1.p)
+	local x2, y2, z2 = cf:ToOrientation()
+	--local d = math.deg
+	if deg then
+		--return Vector3.new(d(x1-x2), d(y1-y2), d(z1-z2))
+	else
+		return Vector3.new((x1-x2), (y1-y2), (z1-z2))
+	end
+end
+
+function getaimbotplrs()
+	plrsforaim = {}
+	for i, plr in pairs(plrs:GetChildren()) do
+		if plr.Character and plr.Character.Humanoid and plr.Character.Humanoid.Health > 0 and plr.Name ~= lplr.Name and plr.Character.Head then
+			
+			if TeamBased == true then
+				if plr.Team.Name ~= lplr.Team.Name then
+					local cf = CFrame.new(game.Workspace.CurrentCamera.CFrame.p, plr.Character.Head.CFrame.p)
+					local r = Ray.new(cf, cf.LookVector * 10000)
+					local ign = {}
+					for i, v in pairs(plrs.LocalPlayer.Character:GetChildren()) do
+						if v:IsA("BasePart") then
+							table.insert(ign , v)
+						end
+					end
+					local obj = game.Workspace:FindPartOnRayWithIgnoreList(r, ign)
+					if obj.Parent == plr.Character and obj.Parent ~= lplr.Character then
+						table.insert(plrsforaim, obj)
+					end
+				end
+			else
+				local cf = CFrame.new(game.Workspace.CurrentCamera.CFrame.p, plr.Character.Head.CFrame.p)
+				local r = Ray.new(cf, cf.LookVector * 10000)
+				local ign = {}
+				for i, v in pairs(plrs.LocalPlayer.Character:GetChildren()) do
+					if v:IsA("BasePart") then
+						table.insert(ign , v)
+					end
+				end
+				local obj = game.Workspace:FindPartOnRayWithIgnoreList(r, ign)
+				if obj.Parent == plr.Character and obj.Parent ~= lplr.Character then
+					table.insert(plrsforaim, obj)
+				end
+			end
+			
+			
+		end
+	end
+end
+
+function aimat(part)
+	cam.CFrame = CFrame.new(cam.CFrame.p, part.CFrame.p)
+end
+function checkfov (part)
+	local fov = getfovxyz(game.Workspace.CurrentCamera.CFrame, part.CFrame)
+	local angle = math.abs(fov.X) + math.abs(fov.Y)
+	return angle
+end
+
+game:GetService("RunService").RenderStepped:Connect(function()
+	if aimatpart then
+		aimat(aimatpart)
+		if aimatpart.Parent == plrs.LocalPlayer.Character then
+			aimatpart = nil
+		end
+	end
+	
+	
+--	if switch == true then
+--		local maxangle = 99999
+--		
+--		--print("Loop")
+--		if true and raycast == false then
+--			for i, plr in pairs(plrs:GetChildren()) do
+--				if plr.Name ~= lplr.Name and plr.Character and plr.Character.Head and plr.Character.Humanoid and plr.Character.Humanoid.Health > 1 then
+--					if TeamBased then
+--						if plr.Team.Name ~= lplr.Team.Name or plr.Team.TeamColor ~= lplr.Team.TeamColor then
+--							local an = checkfov(plr.Character.Head)
+--							if an < maxangle then
+--								maxangle = an
+--								aimatpart = plr.Character.Head
+--								if an < lockangle then
+--									break
+--								end
+--							end
+--						end
+--					else
+--						local an = checkfov(plr.Character.Head)
+--							if an < maxangle then
+--								maxangle = an
+--								aimatpart = plr.Character.Head
+--								if an < lockangle then
+--									break
+--								end
+--							end
+--					end
+--					
+--					
+--					
+--					
+--				end
+--			end
+--		elseif raycast == true then
+--			
+--		end
+		
+		if raycast == true and switch == false and not aimatpart then
+			getaimbotplrs()
+			aimatpart = nil
+			local maxangle = 999
+			for i, v in ipairs(plrsforaim) do
+				if v.Parent ~= lplr.Character then
+					local an = checkfov(v)
+					if an < maxangle and v ~= lplr.Character.Head then
+						maxangle = an
+						aimatpart = v
+						print(v:GetFullName())
+						v.Parent.Humanoid.Died:connect(function()
+							aimatpart = nil
+						end)
+					end
+				end
+			end
+		
+	end
+end)
+delay(0, function()
+	while wait(espupdatetime) do
+		if autoesp == true then
+			pcall(function()
+			f.addesp()
+			end)
+		end
+	end
+end)
+warn("loaded")
+end)
+
+        local main = page:addSection("Glitch")
+        
+       main:addButton("KnockBack", function()
+       if not game:IsLoaded() then
+game.Loaded:Wait()
+end
+
+local plr = game.Players.LocalPlayer
+
+while wait() do
+    pcall(function()
+        game:GetService("Workspace").Live[plr.Name].Head.KnockBacked:Destroy()
+    end)
+end
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+        local main = page:addSection("Free")
+        
+        main:addButton("DarkChat", function()
+        if not game:IsLoaded() then
+    game.Loaded:wait();
+end;
+wait(3)
+
+    pcall(function()
+lplr=game.Players.LocalPlayer;
+char=lplr.Character;
+
+part=Instance.new("Folder",char);
+function DarkThemeFunction(lol)
+   part.Name = lol
+end;
+
+DarkThemeFunction('DarkTheme');
+end)
+end)
+
+main:addButton("Nimbus", function()
+lplr=game.Players.LocalPlayer;
+char=lplr.Character;
+part=Instance.new("Part",char);
+function NimbusFunction(lol)
+   part.Name = lol
+end;
+NimbusFunction('Nimbus');
+end)
+
+main:addButton("Beerus", function()
+if not game:IsLoaded() then
+game.Loaded:Wait()
+end wait()
+
+player = game.Players.LocalPlayer while wait() do
+if game.Workspace.Live[player.Name].Animate.idle:FindFirstChild("Animation1") then
+game.Workspace.Live[player.Name].Animate.idle:FindFirstChild("Animation1").AnimationId = "rbxassetid://1171558651"
+if game.Workspace.Live[player.Name].Animate.walk:FindFirstChild("RunAnim") then
+game.Workspace.Live[player.Name].Animate.walk:FindFirstChild("RunAnim").AnimationId = "rbxassetid://1171558651"
+end end end
+end)
+
+
+    
+
+
+        
+
+
+        
+
+
+
+--Auto Page
+      local page = hub:addPage("Auto", 5012544693)
+        local main = page:addSection("AutoBroly MeleeDMG")
+
+        main:addButton("LazarTM", function()
+        Move1 = "TS Molotov"
+Move2 = "Anger Rush"
+Move3 = "Flash Skewer"
+Move4 = "Neo Wolf Fang Fist"
+Move5 = "Meteor Crash"
+Move6 = "Flash Strike"
+Move7 = "Wolf Fang Fist"
+Move8 = "Deadly Dance"
+Move9 = "God Slicer"
+Move10 = "Sweep Kick"
+
+AutoStats = "MeleeDMG" -- KiDMG For Ki-Damage, MeleeDMG For Phys-Damage, HPMax For Health-Max, KiMax For Ki-Max, MeleeRes For Phys-Resist, KiRes For Ki-Resist, Speed For Speed, Empty For Nothing.
+Earth = true -- set to true to go to earth. False will go to queue world
+FreezeEXP = false
+AntiLeech = false
+Forms = true
+BoostFPS = true
+Day = false
+
+--Ki Moves--
+--Move1 = "Meteor Crash"--
+--Move2 = "Blaster Meteor"--
+--Move3 = "Big Bang Kamehameha"--
+--Move4 = "Flash Skewer"--
+--Move5 = "TS Molotov"--
+--Move6 = "Sudden Storm"--
+--Move7 = "Anger Rush"--
+--Move8 = "Wolf Fang Fist" --
+--Ki Moves--
+
+--Melee Moves--
+--Move1 = "Meteor Crash"--
+--Move2 = "Anger Rush"--
+--Move3 = "Wolf Fang Fist"--
+--Move4 = "Neo Wolf Fang Fist"--
+--Move5 = "Deadly Dance"--
+--Move6 = "TS Molotov"--
+--Move7 = ""--
+--Move8 = ""--
+--Melee Moves--
+
+if not game:IsLoaded() then
+    local loadedcheck = Instance.new("Message", workspace)
+    loadedcheck.Text = "Loading..."
+    game.Loaded:Wait(14)
+    loadedcheck:Destroy()
+end
+wait(0.2)
+game:GetService("StarterGui"):SetCore(
+    "SendNotification",
+    {
+        Title = "Auto Broly Lazar";
+        Text = "By LazarTM"
+    }
+)
+local plr = game.Players.LocalPlayer
+game.Workspace:WaitForChild("Live")
+game.Workspace.Live:WaitForChild(plr.Name)
+game:GetService("RunService").RenderStepped:connect(
+    function()
+        game:GetService("Players").LocalPlayer.PlayerGui.HUD.Bottom.SP.Visible = true
+        game:GetService("Players").LocalPlayer.PlayerGui.HUD.Bottom.SP.Text = "Made By LazarTM";
+    end
+)
+
+game.Players.LocalPlayer.PlayerGui:WaitForChild("HUD")
+game.Players.LocalPlayer.PlayerGui.HUD.Bottom.Stats.Visible = true
+game.Players.LocalPlayer.PlayerGui.HUD.Bottom.Stats.Labvel.TextLabel.Text = "Made By LazarTM"
+
+--[[ Boost FPS ]]--
+if BoostFPS == true then
+repeat wait()
+ until game:IsLoaded()
+   game.Players.LocalPlayer.PlayerGui:WaitForChild("HUD")
+
+local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+local g = game
+local w = g.Workspace
+local l = g.Lighting
+local t = w.Terrain
+t.WaterWaveSize = 0
+t.WaterWaveSpeed = 0
+t.WaterReflectance = 0
+t.WaterTransparency = 0
+l.GlobalShadows = false
+l.FogEnd = 9e9
+l.Brightness = 0
+settings().Rendering.QualityLevel = "Level01"
+for i, v in pairs(g:GetDescendants()) do
+    if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+    elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+        v.Transparency = 1
+    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+        v.Lifetime = NumberRange.new(0)
+    elseif v:IsA("Explosion") then
+        v.BlastPressure = 1
+        v.BlastRadius = 1
+    elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") then
+        v.Enabled = false
+    elseif v:IsA("MeshPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+        v.TextureID = 10385902758728957
+    end
+end
+for i, e in pairs(l:GetChildren()) do
+    if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+        e.Enabled = false
+    end
+end
+end
+--[[ Boost FPS ]]--
+
+--[[ Freeze EXP ]]--
+    if FreezeEXP == true then
+			game:GetService("RunService").Stepped:Connect(function()
+				if game:GetService("Players").LocalPlayer.Character:FindFirstChild("True") then
+					game:GetService("Players").LocalPlayer.Character:FindFirstChild("True"):Destroy()
+				end
+			end)
+		end
+--[[ Freeze EXP ]]--
+    
+--[[ Auto Stats ]]--
+while wait() do
+
+if AutoStats == "KiDMG" then
+local args = {
+    [1] = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Bottom.Stats:FindFirstChild("Ki-Damage")
+}
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.AttemptUpgrade:FireServer(unpack(args))
+end
+if AutoStats == "MeleeDMG" then
+    local args = {
+    [1] = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Bottom.Stats:FindFirstChild("Phys-Damage")
+}
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.AttemptUpgrade:FireServer(unpack(args))
+end
+if AutoStats == "HPMax" then
+local args = {
+    [1] = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Bottom.Stats:FindFirstChild("Health-Max")
+}
+end
+if AutoStats == "KiMax" then
+local args = {
+    [1] = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Bottom.Stats:FindFirstChild("Ki-Max")
+}
+end
+if AutoStats == "MeleeRes" then
+local args = {
+    [1] = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Bottom.Stats:FindFirstChild("Phys-Resist")
+}
+end
+if AutoStats == "KiRes" then
+local args = {
+    [1] = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Bottom.Stats:FindFirstChild("Ki-Resist")
+}
+end
+if AutoStats == "Speed" then
+local args = {
+    [1] = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Bottom.Stats:FindFirstChild("Speed")
+}
+end
+--[[ Auto Stats ]]--
+
+-- Earth Loader
+if game.PlaceId == 536102540 then
+    if Earth == true then
+        local plr = game.Players.LocalPlayer
+        game.Players.LocalPlayer.Character.PowerOutput:Destroy()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2751.67725, 3944.85986, -2272.62622)
+        game:GetService("Workspace").Live[plr.Name].Humanoid.Animator:Destroy()
+        wait(75)
+	game:GetService("TeleportService"):Teleport(536102540)
+    else
+            game:GetService("TeleportService"):Teleport(3565304751)
+            wait(15)
+            game:GetService("TeleportService"):Teleport(3565304751)
+end
+end
+
+--[[ Hide Wings ]]--
+repeat wait()
+ until game:IsLoaded()
+   game.Players.LocalPlayer.PlayerGui:WaitForChild("HUD")
+
+local Live = game:WaitForChild("Workspace").Live
+local Char = Live:WaitForChild(game.Players.LocalPlayer.Name)
+
+while wait() do
+    pcall(function()
+        Char["RebirthWings"].Handle.AccessoryWeld:Destroy()
+    end)
+--[[ Hide Wings ]]--
+    
+    --[[ Hide Lvl/Pres ]]--
+    game:service'RunService'.RenderStepped:connect(function()
+    pcall(function()
+       for i,v in next, game:service'Players'.LocalPlayer.Character:children() do
+            if (string.find(tostring(v.Name):lower(), 'lvl.')) then 
+              v:Destroy()
+          end
+       end
+   end)
+end)
+--[[ Hide Lvl/Pres ]]--
+    
+--[[ Hide Face ]]--
+repeat wait()
+ until game:IsLoaded()
+   game.Players.LocalPlayer.PlayerGui:WaitForChild("HUD")
+
+local Live = game:WaitForChild("Workspace").Live
+local Char = Live:WaitForChild(game.Players.LocalPlayer.Name)
+	for i,v in pairs(Char:GetDescendants()) do
+		if v:IsA("Decal") and v.Name == 'face' then
+			v:Destroy()
+		end
+	end
+--[[ Hide Face ]]--
+
+-- Queue World Loader
+function Twn(HRP,Place,Length)
+    local Twn = game:GetService("TweenService"):Create(HRP,
+    TweenInfo.new(Length,Enum.EasingStyle.Quad,Enum.EasingDirection.InOut),{CFrame = Place})
+    Twn:Play()
+    Twn.Completed:Wait()
+end
+local Live = game:WaitForChild("Workspace").Live
+local Char = Live:WaitForChild(game.Players.LocalPlayer.Name)
+if game.PlaceId == 3565304751 then
+    if AntiLeech == false then do
+    Twn(Char:WaitForChild("HumanoidRootPart"),CFrame.new(0,238,-1500),1)
+    Twn(Char:WaitForChild("HumanoidRootPart"),CFrame.new(0,238,-2000),1)
+    Twn(Char:WaitForChild("HumanoidRootPart"),CFrame.new(0,238,-3000),1)
+	Char.LowerTorso:Destroy()
+    game.Players.LocalPlayer.Character.PowerOutput:Destroy()
+	local Pads = {}
+    for i,v in pairs(game:WaitForChild("Workspace"):GetChildren()) do
+        if v.Name:find("BrolyTeleport") then		       
+			table.insert(Pads,v)
+        end
+    end
+	local pad = Pads[math.random(1,7)]
+	print(pad.Name)
+	Twn(Char.HumanoidRootPart,pad.PrimaryPart.CFrame,1)
+	wait(45)
+	game:GetService("TeleportService"):Teleport(536102540)
+    end
+    end
+    if AntiLeech == true then do
+	local Bounce = false
+    Twn(Char:WaitForChild("HumanoidRootPart"),CFrame.new(0,238,-1500),1)
+    Twn(Char:WaitForChild("HumanoidRootPart"),CFrame.new(0,238,-2000),1)
+    Twn(Char:WaitForChild("HumanoidRootPart"),CFrame.new(0,238,-3000),1)
+	Char.LowerTorso:Destroy()
+	local TeleBounce = false
+	local CollideBounce = false
+	local CollideBounce2 = false
+	function FindPad(Time)
+		for i,v in pairs(game.Workspace:GetChildren()) do
+			if v.Name:find("BrolyTeleport") and v:FindFirstChild("15") then
+				if TeleBounce == false then 
+					TeleBounce = true
+					Twn(Char.HumanoidRootPart,v.PrimaryPart.CFrame + Vector3.new(0,3,0),1)
+					TeleBounce = false
+					break
+				end
+			end
+		end
+	end 
+	for i,v in pairs(Char:GetChildren()) do if v.Name:find("Lvl") then v:Destroy() end end
+		FindPad(3)
+		Char.HumanoidRootPart.Size = Vector3.new(25,2,50)
+		Char.HumanoidRootPart.CanCollide = false
+		Char.HumanoidRootPart.Touched:Connect(function(Collide)
+		if Collide.Parent:FindFirstChild("Humanoid") and Collide.Parent:FindFirstChild("HumanoidRootPart") then
+			if Collide.Parent.Name == game.Players.LocalPlayer.Name then 
+			else
+				if CollideBounce == true then
+					FindPad(.6)
+				end 
+				if CollideBounce2 == false then
+					CollideBounce2 = true
+					CollideBounce = false
+					wait(1)
+					CollideBounce = true
+					wait(1)
+					CollideBounce = false
+					CollideBounce2 = false
+				end
+			end
+		end
+	end)
+	wait(27)
+	game:GetService("TeleportService"):Teleport(3565304751)
+    end
+end
+end
+
+if game.PlaceId == 2050207304 then
+    local B = Live:WaitForChild("Broly BR")
+    local plr = game.Players.LocalPlayer
+    
+--[[ StopWatch ]]--
+if game.PlaceId == 2050207304 then
+local Stopwatch = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+ 
+ 
+Stopwatch.Name = "Stopwatch"
+Stopwatch.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Stopwatch.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ 
+Frame.Parent = Stopwatch
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BackgroundTransparency = 1.000
+Frame.Size = UDim2.new(0, 1543, 0, 104)
+ 
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Size = UDim2.new(0, 1543, 0, 104)
+TextLabel.Font = Enum.Font.ArialBold
+TextLabel.Text = "Loading..."
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = false
+TextLabel.TextSize = 52.000
+TextLabel.TextWrapped = true
+ 
+-- Scripts:
+ 
+local function HNULUA_fake_script() -- TextLabel.LocalScript 
+    local script = Instance.new('LocalScript', TextLabel)
+ 
+    Stopwatch = 0
+    while true do
+        Stopwatch = Stopwatch+1
+        wait(1)
+        script.Parent.Text = (Stopwatch)
+    end
+end
+coroutine.wrap(HNULUA_fake_script)()
+end
+--[[ StopWatch ]]--
+    
+--[[ Day ]]--
+if Day == true then
+for i,v in pairs(game.Lighting:GetChildren()) do
+if v:IsA("") or v:IsA("Sky") or v:IsA("BlurEffect") or v:IsA("BloomEffect") or v:IsA("SunRaysEffect") then
+v:Destroy()
+end
+end
+
+game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
+game.Lighting.Brightness = 1
+game.Lighting.ClockTime = 14
+game.Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
+game.Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
+game.Lighting.ExposureCompensation = 0
+game.Lighting.FogColor = Color3.fromRGB(255, 255, 255)
+game.Lighting.FogEnd = 999999999
+game.Lighting.GeographicLatitude = 41.733
+game.Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+game.Lighting.GlobalShadows = true
+game.Lighting.Changed:Connect(function()
+game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
+game.Lighting.Brightness = 1
+game.Lighting.ClockTime = 14
+game.Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
+game.Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
+game.Lighting.ExposureCompensation = 0
+game.Lighting.FogColor = Color3.fromRGB(255, 255, 255)
+game.Lighting.FogEnd = 999999999
+game.Lighting.GeographicLatitude = 41.733
+game.Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+game.Lighting.GlobalShadows = true
+end)
+game.Lighting.DescendantAdded:Connect(function(obj)
+if obj:IsA("") or obj:IsA("Sky") or obj:IsA("BlurEffect") or obj:IsA("BloomEffect") or obj:IsA("SunRaysEffect") then
+obj:Destroy()
+end
+end)
+end
+--[[ Day ]]--
+
+--[[ Anti Leech ]]--
+    if AntiLeech == true then
+        if #game.Players:GetPlayers() > 1 then
+            wait()
+            game:GetService("TeleportService"):Teleport(3565304751, LocalPlayer)
+        end
+    end
+--[[ Anti Leech ]]--
+
+--[[ Forms ]]--
+if Forms == true then
+            if plr.PlayerGui:WaitForChild("HUD").Bottom.Stats.Race.Val.Text == "Android" then
+                game.Players.LocalPlayer.Backpack.ServerTraits.Transform:FireServer("g")
+            else
+                game.Players.LocalPlayer.Backpack.ServerTraits.Input:FireServer(
+                    {[1] = "x"},
+                    CFrame.new(0, 0, 0),
+                    InputObject
+                )
+                wait(4)
+                game.Players.LocalPlayer.Backpack.ServerTraits.Transform:FireServer("h")
+                wait(0.5)
+                game.Players.LocalPlayer.Backpack.ServerTraits.Input:FireServer(
+                    {[1] = "xoff"},
+                    CFrame.new(0, 0, 0),
+                    InputObject
+                )
+            end
+        end
+       game.Workspace.Camera.FieldOfView = 120
+--[[ Forms ]]--
+
+        Twn(Char.HumanoidRootPart, B.HumanoidRootPart.CFrame, 1)
+        game:GetService("RunService").RenderStepped:connect(
+            function()
+                Char.Humanoid:ChangeState(11)
+                game.Workspace.CurrentCamera.CFrame =
+                    CFrame.new(Char.HumanoidRootPart.Position, B.HumanoidRootPart.Position) * CFrame.new(0, 2, 10)
+                if Char:FindFirstChild("Attacking") then
+                    Char.Attacking:Destroy()
+                end
+                if Char:FindFirstChild("Action") then
+                    Char.Action:Destroy()
+                end
+                if Char:FindFirstChild("Slow") then
+                    Char.Slow:Destroy()
+                end
+                if Char:FindFirstChild("Using") then
+                    Char.Using:Destroy()
+                end
+                if Char:FindFirstChild("MoveStart") then
+                    Char.MoveStart:Destroy()
+                end
+                if game.Players.LocalPlayer.Character.Head:FindFirstChild("KnockBacked") then
+            game.Players.LocalPlayer.Character.Head.KnockBacked:Destroy()
+            end
+            if game.Players.LocalPlayer.Character.Head:FindFirstChild("NotHardBack") then
+            game.Players.LocalPlayer.Character.Head.NotHardBack:Destroy()
+            end
+                if Char.Humanoid.Health < 1 then
+                    game:GetService("TeleportService"):Teleport(3565304751)
+                end
+                game.Players.LocalPlayer.Backpack.ServerTraits.EatSenzu:FireServer(true)
+                if Char.Humanoid.Health < 25 then
+                    game.Players.LocalPlayer.Backpack.ServerTraits.Transform:FireServer("h")
+                end
+                if game.Players.LocalPlayer.Character.Ki.Value < 32 then
+                    _G.HardPunch = true
+                    local A_1 = {
+                        [1] = "m2"
+                    }
+                    local A_2 =
+                        CFrame.new(
+                        -5885.95947,
+                        17.9874992,
+                        -4159.84717,
+                        -0.104352206,
+                        0.396405816,
+                        -0.912125587,
+                        -0,
+                        0.917132735,
+                        0.398581922,
+                        0.994540393,
+                        0.0415929034,
+                        -0.0957048237
+                    )
+                    local A_3 = nil
+                    local A_4 = false
+                    local Event = game:GetService("Players").LocalPlayer.Backpack.ServerTraits.Input
+                    Event:FireServer(A_1, A_2, A_3, A_4)
+                    wait()
+                    _G.HardPunch = true
+                end
+                Char.HumanoidRootPart.CFrame =
+                    game.Workspace.Live["Broly BR"].HumanoidRootPart.CFrame * CFrame.new(0, 0, 4.20)
+                Char.HumanoidRootPart.CFrame = CFrame.new(Char.HumanoidRootPart.Position, B.HumanoidRootPart.Position)
+            end
+        )
+        game.Players.LocalPlayer.PlayerGui:WaitForChild("HUD")
+        game.Players.LocalPlayer.Backpack["Dragon Crush"].Parent = Char
+    Char["Dragon Crush"].Activator["Flip"]:Destroy()
+    Char["Dragon Crush"].Activator["Throw"]:Destroy()
+    Char["Dragon Crush"].Activator["Blocked"]:Destroy()
+    Char["Dragon Crush"].Activator["HitDown"]:Destroy()
+    Char["Dragon Crush"].Activator["BoneBreak"]:Destroy()
+    wait(0.2)
+    Char["Dragon Crush"]:Activate()
+    wait(0.2)
+    Char["Dragon Crush"]:Deactivate()
+    Char["Dragon Crush"].Parent = game.Players.LocalPlayer.Backpack
+        repeat
+game.Workspace.Live['Broly BR'].LowerTorso.Anchored =
+game.Workspace.Live['Broly BR'].UpperTorso.Anchored
+            game:GetService("RunService").RenderStepped:Wait()
+            for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if
+                    v.Name == Move1 or v.Name == Move2 or v.Name == Move3 or v.Name == Move4 or v.Name == Move5 or
+                        v.Name == Move6 or
+                        v.Name == Move7 or
+                        v.Name == Move8 or
+                        v.Name == Move9 or
+                        v.Name == Move10
+                 then
+                    v.Parent = game:GetService("Workspace").Live[game.Players.LocalPlayer.Name]
+                    wait()
+                    v:Activate()
+                    v:Deactivate()
+                    v.Parent = game.Players.LocalPlayer.Backpack
+                end
+            end
+        until B.Humanoid.Health < .1
+        game:GetService("TeleportService"):Teleport(3565304751)
+        elseif Earth == true then
+        game:GetService("TeleportService"):Teleport(536102540)
+end
+end
+end
+end)
+
+-- teleport page
+local page = hub:addPage("Teleport", 5012544693)
+local main = page:addSection("City TP")
+
+main:addButton("South", function()
+    local tweenservice = game:GetService("TweenService")
+local player = game:GetService("Players").LocalPlayer
+local char = player.Character
+local tweeninfo = TweenInfo.new(1, Enum.EasingStyle.Quad)
+local cframe = {CFrame = CFrame.new(-456, 28, -6413)}
+tweenservice:Create(char.HumanoidRootPart, tweeninfo, cframe):Play()
+end)
+
+main:addButton("West", function()
+    local tweenservice = game:GetService("TweenService")
+local player = game:GetService("Players").LocalPlayer
+local char = player.Character
+local tweeninfo = TweenInfo.new(1, Enum.EasingStyle.Quad)
+local cframe = {CFrame = CFrame.new(-571, 23, -2884)}
+tweenservice:Create(char.HumanoidRootPart, tweeninfo, cframe):Play()
+end)
+    
+main:addButton("Central", function()
+    local tweenservice = game:GetService("TweenService")
+local player = game:GetService("Players").LocalPlayer
+local char = player.Character
+local tweeninfo = TweenInfo.new(1, Enum.EasingStyle.Quad)
+local cframe = {CFrame = CFrame.new(-3835, 23, -1428)}
+tweenservice:Create(char.HumanoidRootPart, tweeninfo, cframe):Play()
+end)
+    
+main:addButton("Satan", function()
+    local tweenservice = game:GetService("TweenService")
+local player = game:GetService("Players").LocalPlayer
+local char = player.Character
+local tweeninfo = TweenInfo.new(1, Enum.EasingStyle.Quad)
+local cframe = {CFrame = CFrame.new(-5964, 141, -3012)}
+tweenservice:Create(char.HumanoidRootPart, tweeninfo, cframe):Play()
+end)
+
+main:addButton("East", function()
+local tweenservice = game:GetService("TweenService")
+local player = game:GetService("Players").LocalPlayer
+local char = player.Character
+local tweeninfo = TweenInfo.new(1, Enum.EasingStyle.Quad)
+local cframe = {CFrame = CFrame.new(-6231, 22, -905)}
+tweenservice:Create(char.HumanoidRootPart, tweeninfo, cframe):Play()
+end)
+
+main:addButton("Tower", function()
+local tweenservice = game:GetService("TweenService")
+local player = game:GetService("Players").LocalPlayer
+local char = player.Character
+local tweeninfo = TweenInfo.new(1, Enum.EasingStyle.Quad)
+local cframe = {CFrame = CFrame.new(2047, 1495, -2282)}
+tweenservice:Create(char.HumanoidRootPart, tweeninfo, cframe):Play()
+end)
+
+main:addButton("Lookout", function()
+local tweenservice = game:GetService("TweenService")
+local player = game:GetService("Players").LocalPlayer
+local char = player.Character
+local tweeninfo = TweenInfo.new(1, Enum.EasingStyle.Quad)
+local cframe = {CFrame = CFrame.new(2412, 3945, -2275)}
+tweenservice:Create(char.HumanoidRootPart, tweeninfo, cframe):Play()
+end)
+
+
+
+local main = page:addSection("Servers")
+main:addButton("Rejoin", function()
+game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+end)
+main:addButton("Server Hopper", function()
+  local x = {}
+    for _, v in ipairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")).data) do
+        if type(v) == "table" and v.maxPlayers > v.playing and v.id ~= game.JobId then
+            x[#x + 1] = v.id
+        end
+    end
+    if #x > 0 then
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, x[math.random(1, #x)])
+    end
+end)
+main:addButton("Empty Server", function()
+getgenv().AutoTeleport = true
+getgenv().DontTeleportTheSameNumber = true --If you set this true it won't teleport to the server if it has the same number of players as your current server
+getgenv().CopytoClipboard = true
+loadstring(game:HttpGet("https://raw.githubusercontent.com/rapnz/scripts/master/AmnesiaEmptyServerFinder.lua"))()
+end)
+
+local main = page:addSection("World TP")
+main:addButton("Earth", function()
+    game:GetService("TeleportService"):Teleport(536102540 , game.Players.LocalPlayer)
+    end)
+main:addButton("Namek", function()
+    game:GetService("TeleportService"):Teleport(882399924 , game.Players.LocalPlayer)
+    end)
+main:addButton("Space", function()
+    game:GetService("TeleportService"):Teleport(478132461 , game.Players.LocalPlayer)
+    end)
+main:addButton("Future", function()
+    game:GetService("TeleportService"):Teleport(569994010 , game.Players.LocalPlayer)
+    end)
+main:addButton("Secret", function()
+    game:GetService("TeleportService"):Teleport(2046990924 , game.Players.LocalPlayer)
+    end)
+main:addButton("Queue", function()
+    game:GetService("TeleportService"):Teleport(3565304751 , game.Players.LocalPlayer)
+    end)
+main:addButton("Zaros", function()
+    game:GetService("TeleportService"):Teleport(2651456105 , game.Players.LocalPlayer)
+    end)
+main:addButton("Heaven", function()
+    game:GetService("TeleportService"):Teleport(3552157537 , game.Players.LocalPlayer)
+    end)
+main:addButton("Ranked Earth", function()
+    game:GetService("TeleportService"):Teleport(489979581 , game.Players.LocalPlayer)
+    end)
+main:addButton("Ranked Heaven", function()
+    game:GetService("TeleportService"):Teleport(3618359401 , game.Players.LocalPlayer)
+    end)
+main:addButton("HTC", function()
+    game:GetService("TeleportService"):Teleport(882375367 , game.Players.LocalPlayer)
+    end)
+
+
+
+
+        -- last page
+        local theme = hub:addPage("Settings", 5012544693)
+        local colors = theme:addSection("Colors")
+        local settings = theme:addSection("Settings")
+
+        for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+        colors:addColorPicker(theme, color, function(color3)
+        hub:setTheme(theme, color3)
+        end)
+        end
+
+        settings:addKeybind("Show/Hide Gui", Enum.KeyCode.RightAlt, function()
+            hub:toggle()
+            end, function()
+        end)
+
+        main:addKeybind("Hard Reset", Enum.KeyCode.Delete, function()
+game.Players.LocalPlayer.Character.UpperTorso:Destroy()
+end)
+
+
+        -- load
+        hub:SelectPage(hub.pages[1], true)
